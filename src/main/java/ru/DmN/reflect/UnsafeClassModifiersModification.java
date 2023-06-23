@@ -16,8 +16,8 @@ public class UnsafeClassModifiersModification {
         }
     }
 
-    public static void modify(Class<?> klass, Class<?> modifiers) {
+    public static void modify(Class<?> klass, int modifiers) {
         var unsafe = getUnsafe();
-        unsafe.putLong(klass, 16L, unsafe.getLong(modifiers, 16L));
+        unsafe.putInt(unsafe.getLong(klass, 16L) + 16L, modifiers);
     }
 }
